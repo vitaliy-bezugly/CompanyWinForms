@@ -38,14 +38,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.departmentTitleTextBox = new System.Windows.Forms.TextBox();
             this.addEmployeeButton = new System.Windows.Forms.Button();
-            this.loadDataButton = new System.Windows.Forms.Button();
-            this.updateEmployeeButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.updateEmployeeButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.fullNameSortButton = new System.Windows.Forms.Button();
+            this.salarySortButton = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // employeeDataGridView
@@ -150,37 +158,47 @@
             this.addEmployeeButton.UseVisualStyleBackColor = true;
             this.addEmployeeButton.Click += new System.EventHandler(this.addEmployeeButton_Click);
             // 
-            // loadDataButton
+            // panel2
             // 
-            this.loadDataButton.Location = new System.Drawing.Point(616, 589);
-            this.loadDataButton.Name = "loadDataButton";
-            this.loadDataButton.Size = new System.Drawing.Size(186, 35);
-            this.loadDataButton.TabIndex = 0;
-            this.loadDataButton.Text = "Load data";
-            this.loadDataButton.UseVisualStyleBackColor = true;
-            this.loadDataButton.Click += new System.EventHandler(this.loadDataButton_Click);
+            this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Location = new System.Drawing.Point(611, 193);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(196, 119);
+            this.panel2.TabIndex = 10;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Window;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.updateEmployeeButton);
+            this.panel3.Controls.Add(this.addEmployeeButton);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Location = new System.Drawing.Point(-2, -2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(196, 119);
+            this.panel3.TabIndex = 11;
             // 
             // updateEmployeeButton
             // 
             this.updateEmployeeButton.Location = new System.Drawing.Point(3, 70);
             this.updateEmployeeButton.Name = "updateEmployeeButton";
             this.updateEmployeeButton.Size = new System.Drawing.Size(186, 35);
-            this.updateEmployeeButton.TabIndex = 9;
+            this.updateEmployeeButton.TabIndex = 11;
             this.updateEmployeeButton.Text = "Update employee";
             this.updateEmployeeButton.UseVisualStyleBackColor = true;
             this.updateEmployeeButton.Click += new System.EventHandler(this.updateEmployeeButton_Click);
             // 
-            // panel2
+            // label5
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Window;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.addEmployeeButton);
-            this.panel2.Controls.Add(this.updateEmployeeButton);
-            this.panel2.Location = new System.Drawing.Point(611, 193);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(196, 119);
-            this.panel2.TabIndex = 10;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 6);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(184, 20);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Operations with employee";
             // 
             // label4
             // 
@@ -191,15 +209,66 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Operations with employee";
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Window;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.fullNameSortButton);
+            this.panel4.Controls.Add(this.salarySortButton);
+            this.panel4.Location = new System.Drawing.Point(613, 318);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(196, 119);
+            this.panel4.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(132, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Sorting operations";
+            // 
+            // fullNameSortButton
+            // 
+            this.fullNameSortButton.Location = new System.Drawing.Point(3, 29);
+            this.fullNameSortButton.Name = "fullNameSortButton";
+            this.fullNameSortButton.Size = new System.Drawing.Size(186, 35);
+            this.fullNameSortButton.TabIndex = 8;
+            this.fullNameSortButton.Text = "Sort by full name";
+            this.fullNameSortButton.UseVisualStyleBackColor = true;
+            this.fullNameSortButton.Click += new System.EventHandler(this.fullNameSortButton_Click);
+            // 
+            // salarySortButton
+            // 
+            this.salarySortButton.Location = new System.Drawing.Point(3, 70);
+            this.salarySortButton.Name = "salarySortButton";
+            this.salarySortButton.Size = new System.Drawing.Size(186, 35);
+            this.salarySortButton.TabIndex = 9;
+            this.salarySortButton.Text = "Sort by salary";
+            this.salarySortButton.UseVisualStyleBackColor = true;
+            // 
+            // loadButton
+            // 
+            this.loadButton.Location = new System.Drawing.Point(618, 589);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(186, 35);
+            this.loadButton.TabIndex = 12;
+            this.loadButton.Text = "Load data";
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadDataButton_Click);
+            // 
             // CompanyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(819, 647);
+            this.Controls.Add(this.loadButton);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.loadDataButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.departmentDataGridView);
             this.Controls.Add(this.employeeDataGridView);
@@ -212,6 +281,10 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,14 +297,21 @@
         private Label label1;
         private Label label2;
         private Panel panel1;
-        private Button loadDataButton;
         private Button addDepartmentButton;
         private Label label3;
         private TextBox departmentTitleTextBox;
         private Button updateDepartmentButton;
         private Button addEmployeeButton;
-        private Button updateEmployeeButton;
         private Panel panel2;
         private Label label4;
+        private Panel panel3;
+        private Label label5;
+        private Panel panel4;
+        private Label label6;
+        private Button fullNameSortButton;
+        private Button salarySortButton;
+        private Button addEmployeeButton2;
+        private Button updateEmployeeButton;
+        private Button loadButton;
     }
 }

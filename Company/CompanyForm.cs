@@ -28,14 +28,17 @@ public partial class CompanyForm : Form
     private void loadDataButton_Click(object sender, EventArgs e)
     {
         _departmentController.LoadData();
-        UpdateDepartmentDataSource();
+        var departments = _departmentController.GetDepartments().ToList();
+        UpdateDepartmentDataSource(departments);
     }
 
     private void addDepartmentButton_Click(object sender, EventArgs e)
     {
         string departmentTitle = departmentTitleTextBox.Text;
         _departmentController.AddDepartment(new DepartmentDomain(departmentTitle));
-        UpdateDepartmentDataSource();
+
+        var departments = _departmentController.GetDepartments().ToList();
+        UpdateDepartmentDataSource(departments);
     }
     private void updateDepartmentButton_Click(object sender, EventArgs e)
     {
@@ -46,7 +49,9 @@ public partial class CompanyForm : Form
                 return;
 
             department.Title = departmentTitleTextBox.Text;
-            UpdateDepartmentDataSource();
+
+            var departments = _departmentController.GetDepartments().ToList();
+            UpdateDepartmentDataSource(departments);
         }
         catch (Exception exception)
         {
@@ -64,36 +69,12 @@ public partial class CompanyForm : Form
             departmentTitleTextBox.Text = department.Title;
 
             /* Load department's employee */
-            UpdateEmployeeDataSource(department.Id);
+            GetEmployeesAndUpdateDataSource(department);
         }
         catch (Exception exception)
         {
             HandleException(exception);
         }
-    }
-
-    private void UpdateDepartmentDataSource()
-    {
-        departmentDataGridView.DataSource = _departmentController.GetDepartments().ToList();
-        departmentDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        departmentDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-    }
-    private void UpdateEmployeeDataSource(string departmentId)
-    {
-        var result = _departmentController.GetEmployeeByDepartment(departmentId);
-
-        result.Match<bool>(data =>
-        {
-            employeeDataGridView.DataSource = data.ToList();
-            employeeDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            employeeDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            employeeDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            return true;
-        }, exception =>
-        {
-            HandleException(exception);
-            return false;
-        });
     }
 
     private void addEmployeeButton_Click(object sender, EventArgs e)
@@ -106,7 +87,8 @@ public partial class CompanyForm : Form
 
             var employeeForm = new EmployeeForm(department);
             employeeForm.ShowDialog();
-            UpdateEmployeeDataSource(department.Id);
+
+            GetEmployeesAndUpdateDataSource(department);
         }
         catch (Exception exception)
         {
@@ -128,7 +110,7 @@ public partial class CompanyForm : Form
             if (department == null)
                 return;
 
-            UpdateEmployeeDataSource(department.Id);
+            GetEmployeesAndUpdateDataSource(department);
         }
         catch (Exception exception)
         {
@@ -154,5 +136,52 @@ public partial class CompanyForm : Form
     private void HandleException(Exception exception)
     {
         MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+
+    private void fullNameSortButton_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            var selectedDepartment = GetSelectedDepartment();
+            if (selectedDepartment == null)
+                return;
+
+            var employees = selectedDepartment.GetEmployees().OrderBy(x => x.FullName).ToList();
+            UpdateEmployeeDataSource(employees);
+        }
+        catch (Exception exception)
+        {
+            HandleException(exception);
+        }
+    }
+
+    private void UpdateDepartmentDataSource(List<DepartmentDomain> departments)
+    {
+        departmentDataGridView.DataSource = departments;
+        departmentDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        departmentDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+    }
+    private void UpdateEmployeeDataSource(List<EmployeeDomain> employees)
+    {
+        employeeDataGridView.DataSource = employees;
+
+        employeeDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        employeeDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        employeeDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+    }
+
+    private void GetEmployeesAndUpdateDataSource(DepartmentDomain? department)
+    {
+        var result = _departmentController.GetEmployeeByDepartment(department.Id);
+
+        result.Match<bool>(data =>
+        {
+            UpdateEmployeeDataSource(data.ToList());
+            return true;
+        }, exception =>
+        {
+            HandleException(exception);
+            return false;
+        });
     }
 }
