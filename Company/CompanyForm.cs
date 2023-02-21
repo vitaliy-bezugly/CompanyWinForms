@@ -146,7 +146,43 @@ public partial class CompanyForm : Form
             if (selectedDepartment == null)
                 return;
 
-            var employees = selectedDepartment.GetEmployees().OrderBy(x => x.FullName).ToList();
+            List<EmployeeDomain> employees;
+
+            if(ascendingFullNameCheckBox.Checked == true)
+            {
+                employees = selectedDepartment.GetEmployees().OrderBy(x => x.FullName).ToList();
+            }
+            else
+            {
+                employees = selectedDepartment.GetEmployees().OrderByDescending(x => x.FullName).ToList();
+            }
+
+            UpdateEmployeeDataSource(employees);
+        }
+        catch (Exception exception)
+        {
+            HandleException(exception);
+        }
+    }
+    private void salarySortButton_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            var selectedDepartment = GetSelectedDepartment();
+            if (selectedDepartment == null)
+                return;
+
+            List<EmployeeDomain> employees;
+
+            if (ascendingSalaryCheckBox.Checked == true)
+            {
+                employees = selectedDepartment.GetEmployees().OrderBy(x => x.Salary).ToList();
+            }
+            else
+            {
+                employees = selectedDepartment.GetEmployees().OrderByDescending(x => x.Salary).ToList();
+            }
+
             UpdateEmployeeDataSource(employees);
         }
         catch (Exception exception)

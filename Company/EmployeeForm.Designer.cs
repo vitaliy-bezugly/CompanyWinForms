@@ -58,7 +58,7 @@
             this.addDepartmentButton.Name = "addDepartmentButton";
             this.addDepartmentButton.Size = new System.Drawing.Size(186, 35);
             this.addDepartmentButton.TabIndex = 7;
-            this.addDepartmentButton.Text = "Add employee";
+            this.addDepartmentButton.Text = "Save employee";
             this.addDepartmentButton.UseVisualStyleBackColor = true;
             this.addDepartmentButton.Click += new System.EventHandler(this.addOrUpdateDepartmentButton_Click);
             // 

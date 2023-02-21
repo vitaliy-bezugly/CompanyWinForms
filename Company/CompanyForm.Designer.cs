@@ -44,6 +44,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.ascendingSalaryCheckBox = new System.Windows.Forms.CheckBox();
+            this.ascendingFullNameCheckBox = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.fullNameSortButton = new System.Windows.Forms.Button();
             this.salarySortButton = new System.Windows.Forms.Button();
@@ -213,13 +215,39 @@
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Window;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.ascendingSalaryCheckBox);
+            this.panel4.Controls.Add(this.ascendingFullNameCheckBox);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.fullNameSortButton);
             this.panel4.Controls.Add(this.salarySortButton);
             this.panel4.Location = new System.Drawing.Point(613, 318);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(196, 119);
+            this.panel4.Size = new System.Drawing.Size(196, 169);
             this.panel4.TabIndex = 11;
+            // 
+            // ascendingSalaryCheckBox
+            // 
+            this.ascendingSalaryCheckBox.AutoSize = true;
+            this.ascendingSalaryCheckBox.Checked = true;
+            this.ascendingSalaryCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ascendingSalaryCheckBox.Location = new System.Drawing.Point(1, 134);
+            this.ascendingSalaryCheckBox.Name = "ascendingSalaryCheckBox";
+            this.ascendingSalaryCheckBox.Size = new System.Drawing.Size(100, 24);
+            this.ascendingSalaryCheckBox.TabIndex = 12;
+            this.ascendingSalaryCheckBox.Text = "Ascending";
+            this.ascendingSalaryCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // ascendingFullNameCheckBox
+            // 
+            this.ascendingFullNameCheckBox.AutoSize = true;
+            this.ascendingFullNameCheckBox.Checked = true;
+            this.ascendingFullNameCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ascendingFullNameCheckBox.Location = new System.Drawing.Point(3, 66);
+            this.ascendingFullNameCheckBox.Name = "ascendingFullNameCheckBox";
+            this.ascendingFullNameCheckBox.Size = new System.Drawing.Size(100, 24);
+            this.ascendingFullNameCheckBox.TabIndex = 11;
+            this.ascendingFullNameCheckBox.Text = "Ascending";
+            this.ascendingFullNameCheckBox.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -242,12 +270,13 @@
             // 
             // salarySortButton
             // 
-            this.salarySortButton.Location = new System.Drawing.Point(3, 70);
+            this.salarySortButton.Location = new System.Drawing.Point(1, 96);
             this.salarySortButton.Name = "salarySortButton";
             this.salarySortButton.Size = new System.Drawing.Size(186, 35);
             this.salarySortButton.TabIndex = 9;
             this.salarySortButton.Text = "Sort by salary";
             this.salarySortButton.UseVisualStyleBackColor = true;
+            this.salarySortButton.Click += new System.EventHandler(this.salarySortButton_Click);
             // 
             // loadButton
             // 
@@ -313,5 +342,7 @@
         private Button addEmployeeButton2;
         private Button updateEmployeeButton;
         private Button loadButton;
+        private CheckBox ascendingSalaryCheckBox;
+        private CheckBox ascendingFullNameCheckBox;
     }
 }
