@@ -68,7 +68,7 @@
             this.employeeDataGridView.RowHeadersWidth = 51;
             this.employeeDataGridView.RowTemplate.Height = 29;
             this.employeeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.employeeDataGridView.Size = new System.Drawing.Size(670, 266);
+            this.employeeDataGridView.Size = new System.Drawing.Size(615, 266);
             this.employeeDataGridView.TabIndex = 0;
             // 
             // departmentDataGridView
@@ -82,7 +82,7 @@
             this.departmentDataGridView.RowHeadersWidth = 51;
             this.departmentDataGridView.RowTemplate.Height = 29;
             this.departmentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.departmentDataGridView.Size = new System.Drawing.Size(670, 308);
+            this.departmentDataGridView.Size = new System.Drawing.Size(615, 308);
             this.departmentDataGridView.TabIndex = 1;
             this.departmentDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellContent_Click);
             // 
@@ -106,17 +106,16 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.updateDepartmentButton);
             this.panel1.Controls.Add(this.addDepartmentButton);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.departmentTitleTextBox);
-            this.panel1.Location = new System.Drawing.Point(688, 30);
+            this.panel1.Location = new System.Drawing.Point(633, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(196, 251);
+            this.panel1.Size = new System.Drawing.Size(196, 146);
             this.panel1.TabIndex = 4;
             // 
             // updateDepartmentButton
@@ -167,14 +166,13 @@
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.SystemColors.Window;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.updateEmployeeButton);
             this.panel3.Controls.Add(this.addEmployeeButton);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(688, 193);
+            this.panel3.Location = new System.Drawing.Point(633, 182);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(196, 119);
             this.panel3.TabIndex = 11;
@@ -200,7 +198,7 @@
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.SystemColors.Window;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel4.Controls.Add(this.ascendingSalaryCheckBox);
@@ -208,7 +206,7 @@
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.fullNameSortButton);
             this.panel4.Controls.Add(this.salarySortButton);
-            this.panel4.Location = new System.Drawing.Point(688, 318);
+            this.panel4.Location = new System.Drawing.Point(633, 318);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(196, 169);
             this.panel4.TabIndex = 11;
@@ -269,7 +267,7 @@
             // loadButton
             // 
             this.loadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadButton.Location = new System.Drawing.Point(693, 595);
+            this.loadButton.Location = new System.Drawing.Point(638, 595);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(186, 35);
             this.loadButton.TabIndex = 12;
@@ -280,7 +278,7 @@
             // saveDataButton
             // 
             this.saveDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveDataButton.Location = new System.Drawing.Point(693, 554);
+            this.saveDataButton.Location = new System.Drawing.Point(638, 554);
             this.saveDataButton.Name = "saveDataButton";
             this.saveDataButton.Size = new System.Drawing.Size(186, 35);
             this.saveDataButton.TabIndex = 13;
@@ -292,7 +290,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 647);
+            this.ClientSize = new System.Drawing.Size(841, 647);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.saveDataButton);
             this.Controls.Add(this.loadButton);
@@ -302,6 +300,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.departmentDataGridView);
             this.Controls.Add(this.employeeDataGridView);
+            this.MinimumSize = new System.Drawing.Size(600, 694);
             this.Name = "CompanyForm";
             this.Text = "Company form";
             this.Load += new System.EventHandler(this.CompanyForm_Load);
