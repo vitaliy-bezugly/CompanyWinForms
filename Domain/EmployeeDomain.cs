@@ -16,9 +16,16 @@ public class EmployeeDomain
         FullName = string.Empty;
         Salary = 0;
     }
+
     public EmployeeDomain(string fullName, int salary)
     {
         Id = Guid.NewGuid().ToString();
+        FullName = fullName;
+        Salary = salary;
+    }
+    public EmployeeDomain(string id, string fullName, int salary)
+    {
+        Id = id;
         FullName = fullName;
         Salary = salary;
     }

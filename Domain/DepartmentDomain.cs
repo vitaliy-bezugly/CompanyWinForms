@@ -21,6 +21,12 @@ public class DepartmentDomain
         Title = title;
         _employees = employees;
     }
+    public DepartmentDomain(string id, string title, List<EmployeeDomain> employees)
+    {
+        Id = id;
+        Title = title;
+        _employees = employees;
+    }
 
     public IEnumerable<EmployeeDomain> GetEmployees()
     {

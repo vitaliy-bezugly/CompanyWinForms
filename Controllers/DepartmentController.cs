@@ -1,5 +1,8 @@
 ﻿using Domain;
 using LanguageExt.Common;
+using Mappers;
+using Repositories;
+using Repositories.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +14,11 @@ namespace Controllers;
 public class DepartmentController
 {
     private List<DepartmentDomain> _departments;
-
+    private IDepartmentRepository _departmentRepository;
     public DepartmentController()
     {
         _departments = new List<DepartmentDomain>();
+        _departmentRepository = new DepartmentRepository();
     }
 
     public IEnumerable<DepartmentDomain> GetDepartments()
@@ -54,14 +58,11 @@ public class DepartmentController
 
     public int LoadData()
     {
-        _departments.Add(new DepartmentDomain("Development", new List<EmployeeDomain>()));
-        _departments.Add(new DepartmentDomain("Recruitment", new List<EmployeeDomain>()));
-        _departments.Add(new DepartmentDomain("Managment", new List<EmployeeDomain>()));
-
+        _departments = _departmentRepository.GetAll().Select(x => x.ToDomain()).ToList();
         return _departments.Count;
     }
     public void SaveData()
     {
-        throw new NotImplementedException();
+        _departmentRepository.SaveAll(_departments.Select(x => x.ToEntity()).ToList());
     }
 }

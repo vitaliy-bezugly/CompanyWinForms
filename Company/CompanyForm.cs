@@ -1,15 +1,7 @@
 ﻿using CompanyView;
 using Controllers;
 using Domain;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Company;
 
@@ -30,6 +22,17 @@ public partial class CompanyForm : Form
         _departmentController.LoadData();
         var departments = _departmentController.GetDepartments().ToList();
         UpdateDepartmentDataSource(departments);
+    }
+    private void saveDataButton_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            _departmentController.SaveData();
+        }
+        catch (Exception exception)
+        {
+            HandleException(exception);
+        }
     }
 
     private void addDepartmentButton_Click(object sender, EventArgs e)
@@ -118,26 +121,6 @@ public partial class CompanyForm : Form
         }
     }
 
-    private DepartmentDomain? GetSelectedDepartment()
-    {
-        if (departmentDataGridView.SelectedRows.Count == 0)
-            return null;
-
-        return departmentDataGridView.SelectedRows[0].DataBoundItem as DepartmentDomain;
-    }
-    private EmployeeDomain? GetSelectedEmployee()
-    {
-        if (employeeDataGridView.SelectedRows.Count == 0)
-            return null;
-
-        return employeeDataGridView.SelectedRows[0].DataBoundItem as EmployeeDomain;
-    }
-
-    private void HandleException(Exception exception)
-    {
-        MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
-
     private void fullNameSortButton_Click(object sender, EventArgs e)
     {
         try
@@ -219,5 +202,25 @@ public partial class CompanyForm : Form
             HandleException(exception);
             return false;
         });
+    }
+
+    private DepartmentDomain? GetSelectedDepartment()
+    {
+        if (departmentDataGridView.SelectedRows.Count == 0)
+            return null;
+
+        return departmentDataGridView.SelectedRows[0].DataBoundItem as DepartmentDomain;
+    }
+    private EmployeeDomain? GetSelectedEmployee()
+    {
+        if (employeeDataGridView.SelectedRows.Count == 0)
+            return null;
+
+        return employeeDataGridView.SelectedRows[0].DataBoundItem as EmployeeDomain;
+    }
+
+    private void HandleException(Exception exception)
+    {
+        MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 }
