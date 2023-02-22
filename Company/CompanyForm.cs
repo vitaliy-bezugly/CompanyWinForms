@@ -61,6 +61,35 @@ public partial class CompanyForm : Form
             HandleException(exception);
         }
     }
+    private void deleteDepartmentButton_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            var department = GetSelectedDepartment();
+            if (department == null)
+                return;
+
+            var result = _departmentController.RemoveDepartment(department.Id);
+
+            result.Match(b =>
+            {
+                HandleSuccess("Successfully deleted department");
+                return b;
+            }, exception =>
+            {
+                HandleException(exception);
+                return false;
+            });
+
+            var departments = _departmentController.GetDepartments().ToList();
+            UpdateDepartmentDataSource(departments);
+        }
+        catch (Exception exception)
+        {
+            HandleException(exception);
+        }
+    }
+
     private void cellContent_Click(object sender, DataGridViewCellEventArgs e)
     {
         try
@@ -114,6 +143,36 @@ public partial class CompanyForm : Form
                 return;
 
             GetEmployeesAndUpdateDataSource(department);
+        }
+        catch (Exception exception)
+        {
+            HandleException(exception);
+        }
+    }
+    private void deleteEmployeeButton_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            var employeeToDelete = GetSelectedEmployee();
+            if (employeeToDelete == null)
+                return;
+
+            var department = GetSelectedDepartment();
+            if (department == null)
+                return;
+
+            var result = _departmentController.RemoveEmployeeFromDepartment(department.Id, employeeToDelete);
+
+            result.Match(b =>
+            {
+                HandleSuccess($"Successfully deleted employee from department: {department.Title}");
+                GetEmployeesAndUpdateDataSource(department);
+                return true;
+            }, exception =>
+            {
+                HandleException(exception);
+                return false;
+            });
         }
         catch (Exception exception)
         {
@@ -222,5 +281,9 @@ public partial class CompanyForm : Form
     private void HandleException(Exception exception)
     {
         MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+    private void HandleSuccess(string message)
+    {
+        MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 }

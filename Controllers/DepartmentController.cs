@@ -46,6 +46,19 @@ public class DepartmentController
         _departments.Remove(departmentToDelete);
         return new Result<bool>(true);
     }
+    public Result<bool> RemoveEmployeeFromDepartment(string departmentId, EmployeeDomain employee)
+    {
+        var department = _departments.FirstOrDefault(x => x.Id == departmentId);
+
+        if (department == null)
+            return new Result<bool>(new ArgumentException($"The collection does not have element with id: {departmentId}"));
+
+        var result = department.RemoveEmployee(employee);
+        if(result == false)
+            return new Result<bool>(new ArgumentException($"Can not find employee with index: {employee.Id}"));
+        
+        return new Result<bool>(true);
+    }
     public Result<IEnumerable<EmployeeDomain>> GetEmployeeByDepartment(string departmentId)
     {
         var department = _departments.FirstOrDefault(x => x.Id == departmentId);

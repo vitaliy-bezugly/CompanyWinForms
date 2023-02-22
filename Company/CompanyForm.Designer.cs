@@ -33,12 +33,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.deleteDepartmentButton = new System.Windows.Forms.Button();
             this.updateDepartmentButton = new System.Windows.Forms.Button();
             this.addDepartmentButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.departmentTitleTextBox = new System.Windows.Forms.TextBox();
             this.addEmployeeButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.deleteEmployeeButton = new System.Windows.Forms.Button();
             this.updateEmployeeButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -76,20 +78,20 @@
             this.departmentDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.departmentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.departmentDataGridView.Location = new System.Drawing.Point(12, 30);
+            this.departmentDataGridView.Location = new System.Drawing.Point(12, 28);
             this.departmentDataGridView.Name = "departmentDataGridView";
             this.departmentDataGridView.ReadOnly = true;
             this.departmentDataGridView.RowHeadersWidth = 51;
             this.departmentDataGridView.RowTemplate.Height = 29;
             this.departmentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.departmentDataGridView.Size = new System.Drawing.Size(615, 308);
+            this.departmentDataGridView.Size = new System.Drawing.Size(615, 310);
             this.departmentDataGridView.TabIndex = 1;
             this.departmentDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellContent_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 7);
+            this.label1.Location = new System.Drawing.Point(12, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 20);
             this.label1.TabIndex = 2;
@@ -109,18 +111,29 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.deleteDepartmentButton);
             this.panel1.Controls.Add(this.updateDepartmentButton);
             this.panel1.Controls.Add(this.addDepartmentButton);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.departmentTitleTextBox);
-            this.panel1.Location = new System.Drawing.Point(633, 30);
+            this.panel1.Location = new System.Drawing.Point(633, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(196, 146);
+            this.panel1.Size = new System.Drawing.Size(196, 184);
             this.panel1.TabIndex = 4;
+            // 
+            // deleteDepartmentButton
+            // 
+            this.deleteDepartmentButton.Location = new System.Drawing.Point(3, 140);
+            this.deleteDepartmentButton.Name = "deleteDepartmentButton";
+            this.deleteDepartmentButton.Size = new System.Drawing.Size(186, 35);
+            this.deleteDepartmentButton.TabIndex = 8;
+            this.deleteDepartmentButton.Text = "Delete department";
+            this.deleteDepartmentButton.UseVisualStyleBackColor = true;
+            this.deleteDepartmentButton.Click += new System.EventHandler(this.deleteDepartmentButton_Click);
             // 
             // updateDepartmentButton
             // 
-            this.updateDepartmentButton.Location = new System.Drawing.Point(3, 103);
+            this.updateDepartmentButton.Location = new System.Drawing.Point(3, 100);
             this.updateDepartmentButton.Name = "updateDepartmentButton";
             this.updateDepartmentButton.Size = new System.Drawing.Size(186, 35);
             this.updateDepartmentButton.TabIndex = 7;
@@ -130,7 +143,7 @@
             // 
             // addDepartmentButton
             // 
-            this.addDepartmentButton.Location = new System.Drawing.Point(3, 62);
+            this.addDepartmentButton.Location = new System.Drawing.Point(3, 60);
             this.addDepartmentButton.Name = "addDepartmentButton";
             this.addDepartmentButton.Size = new System.Drawing.Size(186, 35);
             this.addDepartmentButton.TabIndex = 6;
@@ -169,13 +182,24 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.SystemColors.Window;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.deleteEmployeeButton);
             this.panel3.Controls.Add(this.updateEmployeeButton);
             this.panel3.Controls.Add(this.addEmployeeButton);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(633, 182);
+            this.panel3.Location = new System.Drawing.Point(633, 218);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(196, 119);
+            this.panel3.Size = new System.Drawing.Size(196, 156);
             this.panel3.TabIndex = 11;
+            // 
+            // deleteEmployeeButton
+            // 
+            this.deleteEmployeeButton.Location = new System.Drawing.Point(3, 111);
+            this.deleteEmployeeButton.Name = "deleteEmployeeButton";
+            this.deleteEmployeeButton.Size = new System.Drawing.Size(186, 35);
+            this.deleteEmployeeButton.TabIndex = 12;
+            this.deleteEmployeeButton.Text = "Delete employee";
+            this.deleteEmployeeButton.UseVisualStyleBackColor = true;
+            this.deleteEmployeeButton.Click += new System.EventHandler(this.deleteEmployeeButton_Click);
             // 
             // updateEmployeeButton
             // 
@@ -206,7 +230,7 @@
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.fullNameSortButton);
             this.panel4.Controls.Add(this.salarySortButton);
-            this.panel4.Location = new System.Drawing.Point(633, 318);
+            this.panel4.Location = new System.Drawing.Point(633, 379);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(196, 169);
             this.panel4.TabIndex = 11;
@@ -341,5 +365,7 @@
         private CheckBox ascendingSalaryCheckBox;
         private CheckBox ascendingFullNameCheckBox;
         private Button saveDataButton;
+        private Button deleteDepartmentButton;
+        private Button deleteEmployeeButton;
     }
 }

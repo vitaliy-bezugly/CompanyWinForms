@@ -1,4 +1,6 @@
-﻿namespace Domain;
+﻿using LanguageExt.Common;
+
+namespace Domain;
 
 public class DepartmentDomain
 {
@@ -38,5 +40,9 @@ public class DepartmentDomain
     public void AddEmployee(EmployeeDomain employee)
     {
         _employees.Add(employee);
+    }
+    public bool RemoveEmployee(EmployeeDomain employee)
+    {
+        return _employees.Remove(employee);
     }
 }
