@@ -18,7 +18,7 @@ public class DepartmentController
     public DepartmentController()
     {
         _departments = new List<DepartmentDomain>();
-        _departmentRepository = new DepartmentRepository();
+        _departmentRepository = new DepartmentPersistenceRepository();
     }
 
     public IEnumerable<DepartmentDomain> GetDepartments()

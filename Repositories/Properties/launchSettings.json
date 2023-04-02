@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Repositories": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ConnectionString": "Data Source=localhost;Initial Catalog=Company;Integrated Security=True"
+      }
+    }
+  }
+}

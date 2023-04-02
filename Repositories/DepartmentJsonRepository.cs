@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace Repositories;
 
-public class DepartmentRepository : IDepartmentRepository
+public class DepartmentJsonRepository : IDepartmentRepository
 {
     private const string filePath = "data/departments.json";
 
