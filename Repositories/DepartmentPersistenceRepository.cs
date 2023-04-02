@@ -37,12 +37,22 @@ public class DepartmentPersistenceRepository : IDepartmentRepository
     {
         foreach (var item in departmentsToDelete)
         {
-            var exists = _dataContext.Departments.FirstOrDefault(x => x.id == item.id);
+            var exists = _dataContext.Departments.Include(x => x.employees)
+                .FirstOrDefault(x => x.id == item.id);
             if(exists != null)
             {
-                _dataContext.Remove(exists);
+                if (exists.employees.Any())
+                {
+                    _dataContext.Employees.RemoveRange(exists.employees);
+                }
+                else
+                {
+                    exists.employees = new List<EmployeeEntity>();
+                }
+
+                _dataContext.Departments.Remove(exists);
             }
         }
-        // _dataContext.SaveChanges();
+        _dataContext.SaveChanges();
     }
 }
